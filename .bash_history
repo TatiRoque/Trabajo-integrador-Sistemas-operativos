@@ -115,3 +115,45 @@ clear
 ls
 cd ..
 ls
+git commit -m "ya estan los archivos organizados"
+git add *
+git status
+git add .
+git status
+git commit -m "ya estan los archivos organizados"
+git status
+git branch
+git pull
+git push
+pit pull
+git pull
+git status
+git branch
+clear
+git branch
+ls
+cd Trabajo-integrador-Sistemas-operativos
+ls
+clear
+ls
+cd Menu.sh
+ls
+nano Menu.sh
+chmod +x Menu.sh
+./Menu.sh
+touch generar_informe.sh eliminar_temporales.sh respaldo_directorio.sh
+ls
+mkdir scripts
+chmod +x generar_informe.sh eliminar_temporales.sh respaldo_directorio.sh
+ls
+mv generar_informe.sh eliminar_temporales.sh respaldo_directorio.sh scripts/
+ls
+cd scripts
+ls
+cd ..
+ls
+nano Menu.sh
+mkdir -p Log_Files
+ls
+nano generar_informe.sh
+nano Menu.sh
