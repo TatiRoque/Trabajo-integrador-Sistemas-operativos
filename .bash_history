@@ -157,3 +157,43 @@ mkdir -p Log_Files
 ls
 nano generar_informe.sh
 nano Menu.sh
+ls
+nano Menu.sh
+cd scripts
+ls
+nano generar_informe.sh
+./scripts/generar_informe.sh
+cd ..
+./scripts/generar_informe.sh
+cd *
+cd 
+ls
+cd scripts
+ls
+nano general_informe.sh
+nano generar_informe.sh
+cd ..
+./scripts/generar_informe.sh
+cd scripts
+nano generar_informe.sh
+cd ..
+ls
+git add *
+git status
+git commit -m "Menú y script 1 terminados"
+git status
+git pull
+git pull origin main
+git config --global pull.rebase false
+git pull origin main
+git pull origin main --allow-unrelated-histories
+git status
+git add *
+git status
+git add .
+git status
+git commit -m "el merge fue resuelto"
+git status
+git add .
+git status
+git push
