@@ -20,7 +20,7 @@ CONTADOR=1
 iniciar_respaldo() {
     clear
     echo -e "${BLUE}Ejecutando respaldos automáticos de archivos...${RESET}"
-    echo "Aprete 'q' para detener la ejecución de respaldos automáticos"
+    echo "Aprete 'q' para realizar un ultimo respaldo y detener la ejecución"
 
     while true; do
         # Comprimir y guardar el respaldo
