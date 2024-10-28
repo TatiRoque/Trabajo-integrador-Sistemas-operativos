@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Limpiar la terminal
 clear
 
 # Colores para el texto
@@ -34,7 +33,7 @@ iniciar_respaldo() {
         CONTADOR=$((CONTADOR + 1))
 
         # Contador regresivo
-        for i in {30..1}; do
+        for i in {15..1}; do
             echo -ne "Siguiente respaldo en: $i segundos\r"  # Sobrescribir la misma línea
             sleep 1
         done
@@ -75,7 +74,7 @@ while true; do
             ;;
         3)
             clear
-            exec bash "D:/visualStudioCode/repos/Trabajo-integrador-Sistemas-operativos/Menu.sh" # Volver al menú inicial
+            exec bash "/mnt/d/visualStudioCode/repos/Trabajo-integrador-Sistemas-operativos/Menu.sh" # Volver al menú inicial
             ;;
         *)
             echo "Opción inválida. Intente nuevamente."
