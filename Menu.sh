@@ -5,9 +5,9 @@ Amarillo='\e[33m'
 Rojo='\033[0;31m'
 
 echo -e "${Amarillo}¡Bienvenido al Menú!${Color_Off}"
-echo -e "${Green}1. Ejecutar informe${Color_Off}"
-echo -e "${Green}2. Ejecutar temporales${Color_Off}"
-echo -e "${Green}3. Ejecutar respaldos${Color_Off}"
+echo -e "${Green}1. Crear informe de la CPU, memoria y disco.${Color_Off}"
+echo -e "${Green}2. Eliminar archivos temporales.${Color_Off}"
+echo -e "${Green}3. Crear respaldo de un directorio${Color_Off}"
 echo -e "${Rojo}4. Salir${Color_Off}"
 
 read -p "Por favor, seleccione una opción (1, 2, 3 o 4): " opcion
