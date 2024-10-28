@@ -7,10 +7,9 @@ GREEN="\e[32m"
 BLUE="\e[34m"
 RESET="\e[0m"
 
-# Ruta de los directorios y archivo
-DIRECTORIO_ORIGEN="/mnt/d/visualStudioCode/repos/Trabajo-integrador-Sistemas-operativos/ejemploRespaldo"
-ARCHIVO_ORIGEN="texto.txt"  # Solo el nombre del archivo
-DIRECTORIO_RESPALDOS="$DIRECTORIO_ORIGEN/respaldos"
+# Ruta de los directorios
+DIRECTORIO_ORIGEN="/mnt/d/visualStudioCode/repos/Trabajo-integrador-Sistemas-operativos/ejemploRespaldo/directorio"
+DIRECTORIO_RESPALDOS="/mnt/d/visualStudioCode/repos/Trabajo-integrador-Sistemas-operativos/ejemploRespaldo/respaldos"
 
 # Contador de backups
 CONTADOR=1
@@ -18,16 +17,16 @@ CONTADOR=1
 # Función para iniciar respaldos automáticos
 iniciar_respaldo() {
     clear
-    echo -e "${BLUE}Ejecutando respaldos automáticos de archivos...${RESET}"
-    echo "Aprete 'q' para realizar un ultimo respaldo y detener la ejecución"
+    echo -e "${BLUE}Ejecutando respaldos automáticos del directorio...${RESET}"
+    echo "Aprete 'q' para realizar un último respaldo y detener la ejecución"
 
     while true; do
         # Comprimir y guardar el respaldo
         TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
         BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).tar.gz"
         
-        # Cambiar al directorio de origen para evitar el mensaje de tar
-        (cd "$DIRECTORIO_ORIGEN" && tar -czf "$BACKUP_FILE" "$ARCHIVO_ORIGEN")
+        # Comprimir el directorio manteniendo la estructura
+        tar -czf "$BACKUP_FILE" -C "$(dirname "$DIRECTORIO_ORIGEN")" "$(basename "$DIRECTORIO_ORIGEN")"
 
         # Incrementar el contador de backups
         CONTADOR=$((CONTADOR + 1))
@@ -38,7 +37,6 @@ iniciar_respaldo() {
             sleep 1
         done
         
-
         # Comprobar si se ingresó "q" para finalizar
         read -t 1 -n 1 INPUT
         if [[ "$INPUT" == "q" ]]; then
