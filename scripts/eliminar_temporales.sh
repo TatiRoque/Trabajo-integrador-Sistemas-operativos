@@ -32,3 +32,6 @@ function main() {
 }
 
 main
+read -p "Presione cualquier tecla para continuar..."
+clear
+exec bash "./Menu.sh"
