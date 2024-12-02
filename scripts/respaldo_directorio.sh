@@ -9,6 +9,12 @@ RESET="\e[0m"
 DIRECTORIO_ORIGEN="./ejemploRespaldo/directorio"
 DIRECTORIO_RESPALDOS="./ejemploRespaldo/respaldos"
 
+if ! command -v zip &> /dev/null; then
+    echo "El paquete 'zip' no está instalado. Intentando instalarlo..."
+    sudo apt-get update && sudo apt-get install -y zip || { echo "Error al instalar 'zip'."; exit 1; }
+    echo "'zip' ha sido instalado correctamente."
+fi
+
 if [ ! -d "$DIRECTORIO_ORIGEN" ]; then
     echo "Error: El directorio de origen no existe."
     exit 1
@@ -27,9 +33,9 @@ iniciar_respaldo() {
 
     while true; do
         TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-        BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).tar.gz"
+        BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).zip"
         
-        tar -czf "$BACKUP_FILE" -C "$(dirname "$DIRECTORIO_ORIGEN")" "$(basename "$DIRECTORIO_ORIGEN")"
+        zip -r "$BACKUP_FILE" "$DIRECTORIO_ORIGEN"
 
         CONTADOR=$((CONTADOR + 1))
 
@@ -43,8 +49,8 @@ iniciar_respaldo() {
             clear
             echo "Realizando el último respaldo antes de salir..."
             TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-            BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).tar.gz"
-            tar -czf "$BACKUP_FILE" -C "$(dirname "$DIRECTORIO_ORIGEN")" "$(basename "$DIRECTORIO_ORIGEN")"
+            BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).zip"
+            zip -r "$BACKUP_FILE" "$DIRECTORIO_ORIGEN"
             echo "Último respaldo completado. Saliendo..."
             sleep 2
             return
@@ -53,7 +59,7 @@ iniciar_respaldo() {
 }
 
 borrar_respaldos() {
-    ls -1t "$DIRECTORIO_RESPALDOS"/*.tar.gz | tail -n +2 | xargs rm -f
+    ls -1t "$DIRECTORIO_RESPALDOS"/*.zip | tail -n +2 | xargs rm -f
     echo "Respaldos anteriores eliminados, excepto el más reciente."
 }
 
@@ -82,6 +88,5 @@ while true; do
             echo "Opción inválida. Intente nuevamente."
             read -p "Presione cualquier tecla para continuar..."
             ;;
-    esac
+esac
 done
-
