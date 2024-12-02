@@ -10,18 +10,18 @@ DIRECTORIO_ORIGEN="./ejemploRespaldo/directorio"
 DIRECTORIO_RESPALDOS="./ejemploRespaldo/respaldos"
 
 if ! command -v zip &> /dev/null; then
-    echo "El paquete 'zip' no está instalado. Intentando instalarlo..."
-    sudo apt-get update && sudo apt-get install -y zip || { echo "Error al instalar 'zip'."; exit 1; }
-    echo "'zip' ha sido instalado correctamente."
+    echo "⚠️El paquete 'zip' no está instalado. Intentando instalarlo..."
+    sudo apt-get update && sudo apt-get install -y zip || { echo "⚠️Error al instalar 'zip'."; exit 1; }
+    echo "✅'zip' ha sido instalado correctamente.✅"
 fi
 
 if [ ! -d "$DIRECTORIO_ORIGEN" ]; then
-    echo "Error: El directorio de origen no existe."
+    echo "⚠️Error: El directorio de origen no existe."⚠️
     exit 1
 fi
 
 if [ ! -d "$DIRECTORIO_RESPALDOS" ]; then
-    mkdir -p "$DIRECTORIO_RESPALDOS" || { echo "Error al crear el directorio de respaldos."; exit 1; }
+    mkdir -p "$DIRECTORIO_RESPALDOS" || { echo "⚠️Error al crear el directorio de respaldos."; exit 1; }
 fi
 
 CONTADOR=1
@@ -51,7 +51,7 @@ iniciar_respaldo() {
             TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
             BACKUP_FILE="$DIRECTORIO_RESPALDOS/respaldo_$TIMESTAMP_($CONTADOR).zip"
             zip -r "$BACKUP_FILE" "$DIRECTORIO_ORIGEN"
-            echo "Último respaldo completado. Saliendo..."
+            echo "✅Último respaldo completado. Saliendo..."
             sleep 2
             return
         fi

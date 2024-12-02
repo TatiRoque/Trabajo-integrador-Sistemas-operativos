@@ -11,7 +11,7 @@ free -h >> $LOG_FILE
 echo "-----------------------------------------------------" >> $LOG_FILE
 echo "Espacio en Disco:" >> $LOG_FILE
 df -h >> $LOG_FILE
-echo "Informe generado en $LOG_FILE"
+echo "✅Informe generado en $LOG_FILE✅"
 read -p "Presione cualquier tecla para continuar..."
 clear
 exec bash "./Menu.sh"
